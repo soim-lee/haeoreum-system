@@ -50,11 +50,11 @@ check_environment() {
     fi
     
     # PM2 확인
-    if command -v pm2 &> /dev/null; then
-        echo "✅ PM2 설치됨 ($(pm2 --version))"
+    if command -v npx pm2 &> /dev/null; then
+        echo "✅ PM2 설치됨 ($(npx pm2 --version))"
     else
         echo "❌ PM2 미설치"
-        echo "설치 방법: npm install -g pm2"
+        echo "설치 방법: npm install -g npx pm2"
     fi
 }
 
@@ -68,7 +68,7 @@ check_services() {
     
     # PM2 프로세스
     echo "PM2 프로세스:"
-    pm2 status 2>/dev/null || echo "PM2 프로세스 없음"
+    npx pm2 status 2>/dev/null || echo "PM2 프로세스 없음"
     
     # 포트 사용 확인
     echo "포트 사용 상태:"
@@ -135,7 +135,7 @@ restart_services() {
     
     # PM2 프로세스 정리
     echo "PM2 프로세스 정리 중..."
-    pm2 kill 2>/dev/null || true
+    npx pm2 kill 2>/dev/null || true
     
     # Homebrew 서비스 재시작
     echo "Homebrew 서비스 재시작 중..."
@@ -180,9 +180,9 @@ analyze_logs() {
     echo "=== 로그 분석 ==="
     
     # PM2 로그
-    if command -v pm2 &> /dev/null; then
+    if command -v npx pm2 &> /dev/null; then
         echo "PM2 로그 (최근 10줄):"
-        pm2 logs --lines 10 2>/dev/null || echo "PM2 로그 없음"
+        npx pm2 logs --lines 10 2>/dev/null || echo "PM2 로그 없음"
     fi
     
     # Homebrew 서비스 로그

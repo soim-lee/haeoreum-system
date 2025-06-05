@@ -93,10 +93,10 @@ install_dependencies() {
         echo "✅ 의존성이 이미 설치되어 있습니다."
     fi
     
-    # PM2 전역 설치 확인
-    if ! command -v pm2 &> /dev/null; then
+    # PM2 로컬 설치 확인
+    if ! npx npx pm2 --version &> /dev/null; then
         echo "PM2 설치 중..."
-        npm install -g pm2
+        npm install npx pm2
     fi
 }
 
@@ -163,10 +163,10 @@ start_api_server() {
     echo "백엔드 API 서버 시작 중..."
     
     # 기존 프로세스 중지
-    pm2 stop haeoreum-api 2>/dev/null || echo "기존 API 서버가 실행되지 않고 있습니다."
+    npx pm2 stop haeoreum-api 2>/dev/null || echo "기존 API 서버가 실행되지 않고 있습니다."
     
     # API 서버 시작
-    pm2 start ecosystem.config.cjs
+    npx pm2 start ecosystem.config.cjs
     
     echo "✅ 백엔드 API 서버 시작됨 (포트: $API_PORT)"
 }
@@ -193,7 +193,7 @@ check_services() {
     
     # PM2 상태 확인
     echo "=== PM2 프로세스 상태 ==="
-    pm2 status
+    npx pm2 status
     
     # 포트 확인
     if lsof -i :$TOMCAT_PORT | grep -q LISTEN; then
@@ -307,13 +307,13 @@ main() {
     echo "  brew services list                    - Homebrew 서비스 상태"
     echo "  brew services restart tomcat@9        - Tomcat 재시작"
     echo "  brew services restart postgresql@14   - PostgreSQL 재시작"
-    echo "  pm2 status                           - PM2 프로세스 상태"
-    echo "  pm2 logs                             - PM2 로그 확인"
+    echo "  npx pm2 status                           - PM2 프로세스 상태"
+    echo "  npx pm2 logs                             - PM2 로그 확인"
     echo ""
     echo "브라우저에서 자동 열기:"
     echo "  open http://localhost:$TOMCAT_PORT/haeoreum"
     echo ""
-    echo "로그 실시간 확인: pm2 logs --lines 50"
+    echo "로그 실시간 확인: npx pm2 logs --lines 50"
     
     # 자동으로 브라우저에서 열기 (선택사항)
     read -p "브라우저에서 자동으로 웹사이트를 여시겠습니까? (y/n): " -n 1 -r

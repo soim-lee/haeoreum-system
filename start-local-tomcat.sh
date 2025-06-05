@@ -48,10 +48,10 @@ install_dependencies() {
         echo "✅ 의존성이 이미 설치되어 있습니다."
     fi
     
-    # PM2 전역 설치 확인
-    if ! command -v pm2 &> /dev/null; then
+    # PM2 로컬 설치 확인
+    if ! npx npx pm2 --version &> /dev/null; then
         echo "PM2 설치 중..."
-        npm install -g pm2
+        npm install npx pm2
     fi
 }
 
@@ -108,10 +108,10 @@ start_api_server() {
     echo "백엔드 API 서버 시작 중..."
     
     # 기존 프로세스 중지
-    pm2 stop haeoreum-api 2>/dev/null || echo "기존 API 서버가 실행되지 않고 있습니다."
+    npx npx pm2 stop haeoreum-api 2>/dev/null || echo "기존 API 서버가 실행되지 않고 있습니다."
     
     # API 서버 시작
-    pm2 start ecosystem.config.cjs
+    npx npx pm2 start ecosystem.config.cjs
     
     echo "✅ 백엔드 API 서버 시작됨 (포트: $API_PORT)"
 }
@@ -121,10 +121,10 @@ start_tomcat_server() {
     echo "Tomcat 스타일 웹서버 시작 중..."
     
     # 기존 프로세스 중지
-    pm2 stop haeoreum-tomcat 2>/dev/null || echo "기존 Tomcat 서버가 실행되지 않고 있습니다."
+    npx npx pm2 stop haeoreum-tomcat 2>/dev/null || echo "기존 Tomcat 서버가 실행되지 않고 있습니다."
     
     # Tomcat 스타일 서버 시작
-    pm2 start tomcat-server.js --name haeoreum-tomcat
+    npx npx pm2 start tomcat-server.js --name haeoreum-tomcat
     
     echo "✅ Tomcat 스타일 웹서버 시작됨 (포트: $TOMCAT_PORT)"
 }
@@ -136,7 +136,7 @@ check_services() {
     sleep 3
     
     # PM2 상태 확인
-    pm2 status
+    npx npx pm2 status
     
     # 포트 확인
     if netstat -tuln 2>/dev/null | grep -q ":$TOMCAT_PORT "; then
@@ -187,12 +187,12 @@ main() {
     echo "============================================"
     echo ""
     echo "서비스 관리 명령어:"
-    echo "  pm2 status        - 서비스 상태 확인"
-    echo "  pm2 logs          - 로그 확인"
-    echo "  pm2 restart all   - 모든 서비스 재시작"
-    echo "  pm2 stop all      - 모든 서비스 중지"
+    echo "  npx npx pm2 status        - 서비스 상태 확인"
+    echo "  npx npx pm2 logs          - 로그 확인"
+    echo "  npx npx pm2 restart all   - 모든 서비스 재시작"
+    echo "  npx npx pm2 stop all      - 모든 서비스 중지"
     echo ""
-    echo "로그 실시간 확인: pm2 logs --lines 50"
+    echo "로그 실시간 확인: npx npx pm2 logs --lines 50"
 }
 
 # 스크립트 실행

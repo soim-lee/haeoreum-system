@@ -51,10 +51,10 @@ fi
 
 # 6. 백엔드 서버 재시작 (PM2 사용)
 echo "🔄 백엔드 서버 재시작 중..."
-if command -v pm2 >/dev/null 2>&1; then
-    pm2 stop haeoreum-api 2>/dev/null || true
-    pm2 delete haeoreum-api 2>/dev/null || true
-    pm2 start ecosystem.config.cjs
+if command -v npx pm2 >/dev/null 2>&1; then
+    npx pm2 stop haeoreum-api 2>/dev/null || true
+    npx pm2 delete haeoreum-api 2>/dev/null || true
+    npx pm2 start ecosystem.config.cjs
     echo "✅ PM2로 백엔드 서버 시작됨 (포트: $BACKEND_PORT)"
 else
     echo "⚠️  PM2가 설치되지 않음. 수동으로 백엔드 서버를 시작하세요:"
@@ -79,5 +79,5 @@ echo "🔌 API 서버: http://localhost:$BACKEND_PORT"
 echo ""
 echo "📊 서버 상태 확인:"
 echo "   - Tomcat 로그: tail -f $TOMCAT_HOME/logs/catalina.out"
-echo "   - 백엔드 로그: pm2 logs haeoreum-api"
+echo "   - 백엔드 로그: npx pm2 logs haeoreum-api"
 echo ""

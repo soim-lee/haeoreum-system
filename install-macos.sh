@@ -116,7 +116,7 @@ install_pm2() {
     npm config set prefix '~/.npm-global'
     
     # PM2 설치
-    npm install -g pm2
+    npm install -g npx pm2
     
     echo "✅ PM2 설치 완료"
 }
@@ -139,7 +139,7 @@ verify_installation() {
     brew services list | grep tomcat
     
     # PM2 확인
-    pm2 --version
+    npx pm2 --version
     
     echo "✅ 설치 확인 완료"
 }
