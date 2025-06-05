@@ -1,0 +1,16 @@
+node_modules/
+dist/
+.env
+.DS_Store
+*.log
+webapps/
+.replit
+.config/
+.npm/
+.cache/
+coverage/
+.vscode/
+.idea/
+*.tmp
+*.temp
+.git/
