@@ -166,7 +166,7 @@ start_api_server() {
     pm2 stop haeoreum-api 2>/dev/null || echo "기존 API 서버가 실행되지 않고 있습니다."
     
     # API 서버 시작
-    pm2 start ecosystem.config.js
+    pm2 start ecosystem.config.cjs
     
     echo "✅ 백엔드 API 서버 시작됨 (포트: $API_PORT)"
 }

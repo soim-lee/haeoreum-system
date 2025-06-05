@@ -1,57 +1,174 @@
-# 해오름인포텍 업무시스템
+# 해오름인포텍 업무 시스템
 
-통합 업무관리 플랫폼으로 프로젝트 관리, 이력서 분석, 계약 관리, 일정 관리 등을 제공합니다.
+현대적이고 종합적인 비즈니스 관리 플랫폼으로, AI를 활용한 이력서 분석과 프로젝트 매칭을 지원합니다.
 
-## 빠른 시작
+## 🌟 주요 기능
 
-### Linux/Ubuntu
-```bash
-git clone https://github.com/haeoreum-infotech/haeoreum-system.git
-cd haeoreum-system
-chmod +x start-local-tomcat.sh
-./start-local-tomcat.sh
+### 📊 대시보드
+- 월별/분기별/연도별 데이터 시각화
+- 계약 금액 추적 및 누적 시각화
+- 종합 통계 및 분석
+
+### 📋 프로젝트 관리
+- 프로젝트 등록 및 상태 관리
+- 등급, 인원수, 출처 정보 관리
+- 완료/진행 상태 추적
+
+### 👥 이력서 관리
+- AI 기반 이력서 분석 (Google Gemini)
+- 업계별 분류 시스템 (공공/금융/준금융/보험/IT/일반)
+- 주력 분야 자동 분류
+- 프로젝트 매칭 시스템
+- 다중 파일 업로드 지원
+- 이력서 다운로드 기능
+
+### 📄 계약 관리
+- 계약 정보 등록 및 추적
+- 만료일 알림 시스템
+- 계약 상태 관리
+
+### 📅 캘린더
+- 메모 작성 기능
+- 일정 분류 (메모/회의/할일/중요/개인)
+- 계약 만료 알림
+- 시간별 일정 관리
+
+### 📁 양식 관리
+- 드래그 앤 드롭 파일 업로드
+- 양식 파일 저장 및 다운로드
+- 파일 크기 표시
+
+## 🛠 기술 스택
+
+### Frontend
+- **React 18** with TypeScript
+- **Vite** - 빠른 빌드 도구
+- **shadcn/ui** - 현대적인 UI 컴포넌트
+- **Tailwind CSS** - 유틸리티 기반 스타일링
+- **React Query** - 서버 상태 관리
+- **React Hook Form** - 폼 관리
+- **Zod** - 스키마 검증
+
+### Backend
+- **Node.js** with Express.js
+- **TypeScript** - 타입 안전성
+- **Drizzle ORM** - 타입 안전한 데이터베이스 ORM
+- **PostgreSQL** - 관계형 데이터베이스
+- **Google Gemini AI** - 이력서 분석
+- **Multer** - 파일 업로드 처리
+
+### UI/UX
+- **Responsive Design** - 모바일 및 PC 대응
+- **Lucide React Icons** - 일관된 아이콘
+- **Toast Notifications** - 사용자 피드백
+- **Loading States** - 향상된 UX
+
+## 📁 프로젝트 구조
+
+```
+├── client/                 # 프론트엔드
+│   ├── src/
+│   │   ├── components/     # 재사용 가능한 컴포넌트
+│   │   ├── pages/         # 페이지 컴포넌트
+│   │   ├── hooks/         # 커스텀 훅
+│   │   └── lib/           # 유틸리티 함수
+├── server/                # 백엔드
+│   ├── index.ts          # 서버 진입점
+│   ├── routes.ts         # API 라우트
+│   ├── storage.ts        # 데이터 저장소
+│   └── db.ts             # 데이터베이스 연결
+├── shared/               # 공유 코드
+│   └── schema.ts         # 데이터베이스 스키마
+└── 설정 파일들
 ```
 
-### macOS
+## 🚀 설치 및 실행
+
+### 1. 의존성 설치
 ```bash
-git clone https://github.com/haeoreum-infotech/haeoreum-system.git
-cd haeoreum-system
-chmod +x install-macos.sh start-macos-tomcat.sh
-./install-macos.sh
-./start-macos-tomcat.sh
+npm install
 ```
 
-## 접속 URL
+### 2. 환경 변수 설정
+```bash
+# .env 파일 생성
+DATABASE_URL=your_postgresql_url
+GEMINI_API_KEY=your_gemini_api_key
+```
 
-- 웹사이트: http://localhost:8080/haeoreum
-- 대시보드: http://localhost:8080/haeoreum/dashboard
-- API: http://localhost:3000/api
+### 3. 데이터베이스 설정
+```bash
+npm run db:push
+```
 
-## 주요 기능
+### 4. 개발 서버 실행
+```bash
+npm run dev
+```
 
-- 프로젝트 등록 및 관리
-- 이력서 업로드 및 AI 분석
-- 프로젝트-이력서 매칭
-- 계약서 생성 및 관리
-- 일정 관리 및 알림
-- 지원서 관리
-- 블랙리스트 관리
+## 🔐 인증 시스템
 
-## 기술 스택
+- **접근 키 인증**: "sunrise050716"
+- 힌트: "sunrise + 설립일"
+- 세션 기반 인증 시스템
 
-- Frontend: React + TypeScript + Vite
-- Backend: Node.js + Express + TypeScript
-- Database: PostgreSQL + Drizzle ORM
-- UI: Tailwind CSS + shadcn/ui
-- Deployment: Tomcat + PM2
+## 🤖 AI 기능
 
-## 시스템 요구사항
+### 이력서 분석
+- **기술 스택 추출**: JavaScript, React, Node.js 등
+- **경력 분석**: "X년 경력의 개발자" 형태
+- **업계 분류**: 6개 카테고리 자동 분류
+- **주력 분야**: 프론트엔드/백엔드/풀스택 등
 
-- Java 11+
-- Node.js 18+
-- PostgreSQL 12+
-- 8GB RAM 이상 권장
+### 프로젝트 매칭
+- 이력서와 프로젝트 자동 매칭
+- 기술 스택 기반 매칭 점수
+- 매칭 결과 시각화
 
-## 라이선스
+## 📱 반응형 디자인
 
-해오름인포텍 © 2024
+- **모바일 퍼스트** 접근
+- **태블릿 및 데스크톱** 최적화
+- **다크모드** 지원 준비
+
+## 🎨 디자인 시스템
+
+- **색상**: 파란색 기반 브랜드 컬러
+- **타이포그래피**: 깔끔하고 읽기 쉬운 폰트
+- **컴포넌트**: 일관된 스타일링
+- **애니메이션**: 부드러운 전환 효과
+
+## 📈 성능 최적화
+
+- **코드 스플리팅**: 페이지별 분할 로딩
+- **이미지 최적화**: 다양한 형식 지원
+- **캐싱**: React Query를 통한 데이터 캐싱
+- **번들 최적화**: Vite의 빠른 빌드
+
+## 🔧 개발 도구
+
+- **TypeScript**: 전체 프로젝트 타입 안전성
+- **ESLint**: 코드 품질 관리
+- **Prettier**: 일관된 코드 포맷팅
+- **Hot Reload**: 빠른 개발 경험
+
+## 📊 데이터 관리
+
+### 현재 상태
+- **메모리 기반** 저장소 (개발용)
+- **PostgreSQL 스키마** 준비 완료
+- **마이그레이션** 시스템 구축
+
+### 데이터베이스 전환 가능
+- 모든 스키마가 Drizzle ORM으로 정의됨
+- 영구 데이터 저장을 위한 DB 연결 준비 완료
+
+## 📞 지원 및 문의
+
+이 시스템은 해오름인포텍의 업무 효율성을 위해 특별히 설계되었습니다.
+
+---
+
+**개발 완료일**: 2025년 1월
+**버전**: 1.0.0
+**라이선스**: MIT

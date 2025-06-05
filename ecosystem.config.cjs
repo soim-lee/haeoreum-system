@@ -8,11 +8,8 @@ module.exports = {
     max_memory_restart: '1G',
     env: {
       NODE_ENV: 'production',
-      PORT: 8080,
-      // 데이터베이스 설정
-      DATABASE_URL: 'postgresql://username:password@localhost:5432/haeoreum_db',
-      // OpenAI API 키 (실제 키로 교체 필요)
-      OPENAI_API_KEY: 'your-openai-api-key-here'
+      PORT: 3000,
+      DATABASE_URL: 'postgresql://haeoreum_user:haeoreum2024!@localhost:5432/haeoreum_db'
     },
     error_file: './logs/err.log',
     out_file: './logs/out.log',
