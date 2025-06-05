@@ -40,7 +40,7 @@ haeoreum-system/
 ├── shared/                    # 공통 스키마
 ├── start-local-tomcat.sh      # 자동 배포 스크립트
 ├── tomcat-server.js           # Tomcat 스타일 서버
-├── ecosystem.config.js        # PM2 설정
+├── ecosystem.config.cjs        # PM2 설정
 ├── web.xml                    # 웹앱 설정
 └── package.json               # 의존성 관리
 ```

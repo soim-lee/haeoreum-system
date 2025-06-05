@@ -114,8 +114,8 @@ EOF
 # PM2 전역 설치
 npm install -g pm2
 
-# ecosystem.config.js 확인/생성
-cat > ecosystem.config.js << 'EOF'
+# ecosystem.config.cjs 확인/생성
+cat > ecosystem.config.cjs << 'EOF'
 module.exports = {
   apps: [{
     name: 'haeoreum-api',
@@ -179,7 +179,7 @@ sudo systemctl start tomcat
 ### 백엔드 API 서버 시작
 ```bash
 # PM2로 백엔드 서버 시작
-pm2 start ecosystem.config.js
+pm2 start ecosystem.config.cjs
 
 # 부팅 시 자동 시작 설정
 pm2 startup
@@ -250,7 +250,7 @@ sudo chown -R $USER:$USER $TOMCAT_WEBAPPS
 
 # 8. 서비스 시작
 sudo systemctl start tomcat || /opt/tomcat/bin/startup.sh
-pm2 start ecosystem.config.js
+pm2 start ecosystem.config.cjs
 
 echo "배포 완료!"
 echo "웹사이트: http://localhost:8080/haeoreum"

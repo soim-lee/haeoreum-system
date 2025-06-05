@@ -54,7 +54,7 @@ echo "🔄 백엔드 서버 재시작 중..."
 if command -v pm2 >/dev/null 2>&1; then
     pm2 stop haeoreum-api 2>/dev/null || true
     pm2 delete haeoreum-api 2>/dev/null || true
-    pm2 start ecosystem.config.js
+    pm2 start ecosystem.config.cjs
     echo "✅ PM2로 백엔드 서버 시작됨 (포트: $BACKEND_PORT)"
 else
     echo "⚠️  PM2가 설치되지 않음. 수동으로 백엔드 서버를 시작하세요:"

@@ -524,11 +524,11 @@ deploy_backend() {
     pm2 stop haeoreum-api 2>/dev/null || log_warning "PM2 프로세스가 실행되지 않고 있습니다."
     
     # PM2로 새 프로세스 시작
-    if [ -f "ecosystem.config.js" ]; then
-        pm2 start ecosystem.config.js --env production
+    if [ -f "ecosystem.config.cjs" ]; then
+        pm2 start ecosystem.config.cjs --env production
         log_success "PM2로 백엔드 서버 시작 완료"
     else
-        log_warning "ecosystem.config.js가 없습니다. 수동으로 백엔드를 시작하세요."
+        log_warning "ecosystem.config.cjs가 없습니다. 수동으로 백엔드를 시작하세요."
     fi
     
     # PM2 설정 저장

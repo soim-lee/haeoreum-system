@@ -37,7 +37,7 @@ git config user.email "sunrise050716@haeoreum.com"
 
 # 변경사항 커밋
 git add .
-git commit -m "Fix ecosystem.config.js -> ecosystem.config.cjs
+git commit -m "Fix ecosystem.config.cjs -> ecosystem.config.cjs
 
 - PM2 ES modules 호환성 문제 해결
 - CommonJS 형식으로 변경

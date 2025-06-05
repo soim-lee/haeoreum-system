@@ -480,13 +480,13 @@ which pm2
 ```bash
 cd /var/www/haeoreum
 
-# ecosystem.config.js 파일 확인
-cat ecosystem.config.js
+# ecosystem.config.cjs 파일 확인
+cat ecosystem.config.cjs
 ```
 
 설정 파일이 없으면 생성:
 ```bash
-nano ecosystem.config.js
+nano ecosystem.config.cjs
 ```
 
 다음 내용을 입력:
@@ -533,7 +533,7 @@ cd /var/www/haeoreum
 export $(grep -v '^#' .env | xargs)
 
 # PM2로 애플리케이션 시작
-pm2 start ecosystem.config.js
+pm2 start ecosystem.config.cjs
 
 # 상태 확인
 pm2 status
@@ -1055,7 +1055,7 @@ log_info "서비스 시작 중..."
 sudo systemctl start tomcat
 sleep 5
 
-pm2 restart haeoreum-api || pm2 start ecosystem.config.js
+pm2 restart haeoreum-api || pm2 start ecosystem.config.cjs
 
 # 8. 서비스 확인
 log_info "서비스 상태 확인 중..."
@@ -1408,7 +1408,7 @@ pm2 restart haeoreum-api
 
 # 또는 완전 재시작
 pm2 delete haeoreum-api
-pm2 start ecosystem.config.js
+pm2 start ecosystem.config.cjs
 ```
 
 #### 10.1.4 데이터베이스 연결 오류
@@ -1624,7 +1624,7 @@ tar -czf $BACKUP_DIR/tomcat_webapp.tar.gz /opt/tomcat/webapps/haeoreum
 echo "설정 파일 백업 중..."
 mkdir -p $BACKUP_DIR/configs
 cp /var/www/haeoreum/.env $BACKUP_DIR/configs/
-cp /var/www/haeoreum/ecosystem.config.js $BACKUP_DIR/configs/
+cp /var/www/haeoreum/ecosystem.config.cjs $BACKUP_DIR/configs/
 cp /opt/tomcat/bin/setenv.sh $BACKUP_DIR/configs/
 cp /etc/systemd/system/tomcat.service $BACKUP_DIR/configs/
 

@@ -37,9 +37,9 @@ EOF
 chmod +x start-backend.sh
 
 # 7. PM2 설정 파일 확인
-if [ ! -f "ecosystem.config.js" ]; then
+if [ ! -f "ecosystem.config.cjs" ]; then
     echo "📄 PM2 설정 파일 생성 중..."
-    cat > ecosystem.config.js << 'EOF'
+    cat > ecosystem.config.cjs << 'EOF'
 module.exports = {
   apps: [{
     name: 'haeoreum-api',
@@ -61,6 +61,6 @@ echo "✅ Tomcat 빌드 완료!"
 echo ""
 echo "배포 방법:"
 echo "1. tomcat-webapp/ 디렉토리를 Tomcat의 webapps/haeoreum/으로 복사"
-echo "2. 백엔드 API 서버 시작: ./start-backend.sh 또는 pm2 start ecosystem.config.js"
+echo "2. 백엔드 API 서버 시작: ./start-backend.sh 또는 pm2 start ecosystem.config.cjs"
 echo "3. Tomcat 접속: http://localhost:8080/haeoreum"
 echo ""

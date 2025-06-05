@@ -319,7 +319,7 @@ brew services list | grep tomcat
 pm2 stop all
 
 # 백엔드 API 서버 시작
-pm2 start ecosystem.config.js
+pm2 start ecosystem.config.cjs
 
 # 프로세스 상태 확인
 pm2 status

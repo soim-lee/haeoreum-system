@@ -105,7 +105,7 @@ haeoreum-project/
 ├── package.json              # 의존성 정보
 ├── package-lock.json
 ├── web.xml                   # Tomcat 설정
-├── ecosystem.config.js       # PM2 설정
+├── ecosystem.config.cjs       # PM2 설정
 ├── tsconfig.json
 ├── vite.config.ts
 ├── tailwind.config.ts
@@ -907,7 +907,7 @@ sudo systemctl restart tomcat
 #### PM2로 백엔드 서버 시작
 ```bash
 # PM2로 백엔드 시작
-pm2 start ecosystem.config.js
+pm2 start ecosystem.config.cjs
 
 # 자동 시작 설정
 pm2 startup
